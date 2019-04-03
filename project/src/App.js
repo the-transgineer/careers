@@ -4,6 +4,10 @@ import Home from "./Routes/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Teams from "./Routes/Teams";
 
+const TeamRoute = (props) => (
+ <Teams id={props.match.params.id}/>
+);
+
 class App extends Component {
 	render() {
 		return (
@@ -11,7 +15,7 @@ class App extends Component {
 					<Header/>
 					<Switch>
 						<Route exact path="/" component={() => <Home/>}/>
-						<Route exact path="/teams" component={() => <Teams/>}/>
+						<Route path="/teams/:id?" component={TeamRoute}/>
 					</Switch>
 				</Router>
 		);
