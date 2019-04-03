@@ -31,16 +31,17 @@ class Teams extends React.Component {
       <div className={style.Content}>
         <div className={style.Breadcrumb}>
           Teams  <i className="fa fa-chevron-right"/>
-          <DropDown selected={this.props.id} teams={this.state.teams}/>
+          <DropDown selected={this.props.teamId} teams={this.state.teams}/>
         </div>
-        <TeamList id={this.props.id}/>
+        <TeamList teamId={this.props.teamId}/>
       </div>
     );
   }
 }
 
 Teams.propTypes = {
-  id: PropTypes.string
+  teamId: PropTypes.string,
+  memberId: PropTypes.string
 };
 
 export default Teams;
