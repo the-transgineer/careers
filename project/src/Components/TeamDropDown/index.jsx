@@ -1,14 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 import * as style from "./index.less";
+import { idLookUp } from "../../helpers";
 
 class TeamDropDown extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       teams: this.props.teams,
-      selected: this.props.selected || "Select Team",
+      selected: "Select Team",
       menuOpen: false
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.teams !== this.props.teams) {
+     this.setState({
+       teams: this.props.teams,
+       selected: idLookUp(this.props.selected, this.props.teams).name
+     });
     }
   }
 
@@ -20,17 +30,14 @@ class TeamDropDown extends React.Component {
   };
 
   handleSelect = (id) => {
-    let selected;
-    this.state.teams.forEach( team => {
-      if (team.id === id) {
-        return selected = team.name;
-      }
-    });
+    let selected = idLookUp(id, this.state.teams);
     this.setState({
-      selected,
+      selected: selected.name,
       menuOpen: false
     });
+    this.props.history.replace(`/teams/${id}`);
   };
+
 
   render() {
     return (
@@ -62,4 +69,4 @@ TeamDropDown.propTypes = {
   teams: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default TeamDropDown;
+export default withRouter(TeamDropDown);
