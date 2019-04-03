@@ -1,12 +1,15 @@
 import React from "react";
+import DropDown from "../../Components/TeamDropDown";
 import * as style from '../../App.less';
+import teams from "./teams";
 
 class Teams extends React.Component {
   render() {
     return (
       <div className={style.Content}>
         <div className={style.Breadcrumb}>
-          Teams
+          Teams >
+          <DropDown teams={teams}/>
         </div>
       </div>
     );
