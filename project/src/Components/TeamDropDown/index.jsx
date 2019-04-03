@@ -15,9 +15,15 @@ class TeamDropDown extends React.Component {
   }
   componentDidUpdate(prevProps) {
     if (prevProps.teams !== this.props.teams) {
+      let selected;
+      if (this.props.selected) {
+        selected = idLookUp(this.props.selected, this.props.teams).name
+      } else {
+        selected = "Select Team"
+      }
      this.setState({
        teams: this.props.teams,
-       selected: idLookUp(this.props.selected, this.props.teams).name
+       selected
      });
     }
   }
