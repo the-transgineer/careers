@@ -66,20 +66,23 @@
 .Content {
 	padding: 30px;
 
-	.Breadcrumb {
-		font-size: @h1;
-		font-weight: 300;
-		margin: 0 0 30px;
-	}
-
-	.Box {
-		background: #FFF;
-		box-shadow: @shadow;
-		padding: 20px;
-	}
 }
 
 a {
 	color: white;
 	text-decoration: none;
+}
+
+.Breadcrumb {
+	font-size: @h1;
+	font-weight: 300;
+	margin: 0 0 30px;
+	display: flex;
+	flex-direction: row;
+}
+
+.Box {
+	background: #FFF;
+	box-shadow: @shadow;
+	padding: 20px;
 }
