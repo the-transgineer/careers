@@ -3,6 +3,7 @@ import DropDown from "../../Components/TeamDropDown";
 import PropTypes from "prop-types";
 import * as style from '../../App.less';
 import axios from "axios";
+import TeamList from "../../Components/TeamList";
 
 class Teams extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Teams extends React.Component {
 
    componentWillMount() {
     axios.get("http://www.mocky.io/v2/5c9d99d133000056003f2385")
-      .then((res) => {
+      .then(res => {
         if (res.status === 200) {
           this.setState({
             teams: res.data,
@@ -32,6 +33,7 @@ class Teams extends React.Component {
           Teams  <i className="fa fa-chevron-right"/>
           <DropDown selected={this.props.id} teams={this.state.teams}/>
         </div>
+        <TeamList id={this.props.id}/>
       </div>
     );
   }
