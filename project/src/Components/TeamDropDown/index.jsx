@@ -36,17 +36,21 @@ class TeamDropDown extends React.Component {
     return (
       <div className={style.DropDown}>
         <div className={style.DropDownSelect} onClick={this.toggleList}>
-          <div className="DropDownTitle">{this.state.selected}</div>
+          <div className={style.Title}>{this.state.selected}</div>
           {this.state.menuOpen
-            ? <i className="fa fa-angle-up"/>
-            : <i className="fa fa-angle-down"/>
+            ? <i className="fa fa-caret-up"/>
+            : <i className="fa fa-caret-down"/>
           }
         </div>
         {this.state.menuOpen &&
         <ul className={style.TeamList}>
-          {this.state.teams.map((team) => (
-            <li onClick={() => this.handleSelect(team.id)} key={team.id} >{team.name}</li>
-          ))}
+          {this.state.teams.map((team) => {
+            if (!(team.name === this.state.selected)) {
+             return <li onClick={() => this.handleSelect(team.id)} key={team.id}>{team.name}</li>
+            } else {
+              return null;
+            }
+          })}
         </ul>}
       </div>
     )

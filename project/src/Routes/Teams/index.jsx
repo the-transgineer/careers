@@ -8,7 +8,7 @@ class Teams extends React.Component {
     return (
       <div className={style.Content}>
         <div className={style.Breadcrumb}>
-          Teams >
+          Teams  <i className="fa fa-chevron-right"/>
           <DropDown teams={teams}/>
         </div>
       </div>

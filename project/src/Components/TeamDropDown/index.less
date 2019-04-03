@@ -1,11 +1,28 @@
 @import "../../../less/base.less";
 
 .DropDown {
+  margin-left: 10px;
+  i {
+    margin-left: 1px;
+    color: #545454;
+  }
   .DropDownSelect {
     display: flex;
     flex-direction: row;
   }
+  .Title {
+    margin-right: 5px;
+  }
   .TeamList {
     list-style-type: none;
+
+    li {
+      margin: 4px 0 4px 0;
+      padding: 4px 4px 4px 4px;
+      &:hover {
+        background-color: #0099cc;
+        color: white;
+      }
+    }
   }
 }
